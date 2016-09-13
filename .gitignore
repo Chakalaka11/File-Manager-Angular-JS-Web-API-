@@ -1,0 +1,6 @@
+#gitignore files
+#Visual Studio files
+.vs
+packages
+obj
+PublishProfiles

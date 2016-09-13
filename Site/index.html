@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LocationApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        testpage
+    </title>
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+    <!-- Scripts -->
+    <script src="js/angular.js"></script>
+    <script src="js/site.js"></script>
+
+</head>
+
+<body ng-controller="MainPageContr">
+    <div class="container">
+        <div class="row">
+            <h3>{{title}}</h3>
+            <div class="row">
+                <div ng-repeat="bar in bars" class="four columns counter">
+                    <h6>{{bar}}</h6>
+                </div>
+            </div>
+            <div ng-click="goto($event)">
+                Some stuff
+            </div>
+            <div class="twelve columns">
+                <table>
+                    <tr ng-repeat="dir in directories">
+                        <td>{{dir}}</td>
+                    </tr>
+                    <tr ng-repeat="file in files">
+                        <td>{{file}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- Angular Controllers -->
+<script src="js/controllers/mainpagecontroller.js"></script>
+
+</html>
