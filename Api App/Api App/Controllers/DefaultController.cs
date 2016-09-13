@@ -24,10 +24,26 @@ namespace Api_App.Controllers
         {
             string absolutePath = paramts.path;
             DirectoryInfo dirinfo = new DirectoryInfo(absolutePath);
-            string[] files = Directory.GetFiles(absolutePath);
-            string[] directories = Directory.GetDirectories(absolutePath);
-            
-            return new { Files = files, Directories = directories };
+            var filesIn = dirinfo.GetFiles();
+            var directoriesIn = dirinfo.GetDirectories();
+            List<string> files = new List<string>();
+            List<string> directories = new List<string>();
+            int[] size_groups = { 0, 0, 0 };
+            foreach (var item in filesIn)
+            {
+                files.Add(item.Name);
+                if (item.Length < 10485760)
+                    size_groups[0]++;
+                if (item.Length >= 10485760&&item.Length<52428800)
+                    size_groups[1]++;
+                if (item.Length > 104857600)
+                    size_groups[2]++;
+            };
+            foreach (var item in directoriesIn)
+            {
+                directories.Add(item.Name);
+            }
+            return new { Files = files, Directories = directories,SizeGroups =  size_groups};
         }
         public object getContent()
         {

@@ -22,17 +22,18 @@
             <div class="row">
                 <div ng-repeat="bar in bars" class="four columns counter">
                     <h6>{{bar}}</h6>
+                    <h6>{{group[$index]}}</h6>
                 </div>
-            </div>
-            <div ng-click="goto($event)">
-                Some stuff
             </div>
             <div class="twelve columns">
                 <table>
-                    <tr ng-repeat="dir in directories">
+                    <tr ng-click="goto($event)">
+                        <td>../</td>
+                    </tr>
+                    <tr ng-click="goto($event)" ng-repeat="dir in directories">
                         <td>{{dir}}</td>
                     </tr>
-                    <tr ng-repeat="file in files">
+                    <tr ng-click="goto($event)" ng-repeat="file in files">
                         <td>{{file}}</td>
                     </tr>
                 </table>
