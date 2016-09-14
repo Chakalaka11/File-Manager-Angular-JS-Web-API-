@@ -1,5 +1,5 @@
 
-var url = "http://localhost:51296/api/default/getContent/getContent?callback=JSON_CALLBACK";
+var url = "http://locationapiapp.azurewebsites.net/api/default/getContent?callback=JSON_CALLBACK";
 
 
 app.controller('MainPageContr', function ($scope, $http) {

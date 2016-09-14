@@ -30,3 +30,7 @@ table{
 .file{
     color: #517AFF;
 }
+td:hover{
+    background: #
+    cursor: pointer !important;
+}

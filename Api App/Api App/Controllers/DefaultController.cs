@@ -14,22 +14,18 @@ namespace Api_App.Controllers
 {
     [EnableCors("*", "*", "*")]
     public class DefaultController : ApiController
-    {   
-        public string getSmth()
-        {
-            return "Hello , World!";
-        }
+    {
         [HttpPost]
         public object getContent(dynamic paramts)
         {
             string absolutePath = paramts.path;
             DirectoryInfo dirinfo = new DirectoryInfo(absolutePath);
-            var filesIn = dirinfo.GetFiles();
-            var directoriesIn = dirinfo.GetDirectories();
+            var filesIn = dirinfo.GetFiles();// get files with all needed information
+            var directoriesIn = dirinfo.GetDirectories();//get directories
             List<string> files = new List<string>();
             List<string> directories = new List<string>();
             int[] size_groups = { 0, 0, 0 };
-            foreach (var item in filesIn)
+            foreach (var item in filesIn)//get numbers of files , grouped by size
             {
                 files.Add(item.Name);
                 if (item.Length < 10485760)
@@ -43,15 +39,11 @@ namespace Api_App.Controllers
             {
                 directories.Add(item.Name);
             }
-            return new { Files = files, Directories = directories,SizeGroups =  size_groups};
+            return new { Files = files, Directories = directories,SizeGroups =  size_groups};//transfer to front-end
         }
         public object getContent()
         {
             return new {path = HttpRuntime.AppDomainAppPath };
-        }
-        public void getBack()
-        {
-
         }
     }
 }
