@@ -47,9 +47,7 @@ namespace Api_App.Controllers
         }
         public object getContent()
         {
-            string[] files = Directory.GetFiles(HttpRuntime.AppDomainAppPath);
-            string[] directories = Directory.GetDirectories(HttpRuntime.AppDomainAppPath);
-            return new { Files = files, Directories = directories, path = HttpRuntime.AppDomainAppPath };
+            return new {path = HttpRuntime.AppDomainAppPath };
         }
         public void getBack()
         {
